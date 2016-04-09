@@ -1,14 +1,19 @@
 package neagucristian.bookbunker;
 
+import android.content.ClipData;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -67,7 +72,20 @@ public class LibraryFragment extends android.support.v4.app.Fragment {
             }
         ListAdapter adapter = new ListAdapter(getContext(), objects);
         list.setAdapter(adapter);
+        View emptyView = rootView.findViewById(R.id.library_oops);
+            list.setEmptyView(emptyView);
         }
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                position += 1;
+                android.support.v4.app.Fragment fragment = null;
+                fragment = (android.support.v4.app.Fragment) ItemFragment.newInstance(position);
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.flcontainer, fragment).commit();
+            }
+        });
+
         c.close();
         db.close();
 

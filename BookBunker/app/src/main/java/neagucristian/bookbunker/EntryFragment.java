@@ -17,6 +17,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.Toast;
+
 import neagucristian.bookbunker.LibraryContract.BookEntry;
 
 public class EntryFragment extends android.support.v4.app.Fragment {
@@ -43,6 +45,11 @@ public class EntryFragment extends android.support.v4.app.Fragment {
                 EditText comment = (EditText) rootView.findViewById(R.id.entry_commentEdit);
                 RatingBar rating = (RatingBar) rootView.findViewById(R.id.ratingBar);
 
+                if(title.getText().length()==0) {
+                    Toast toast = Toast.makeText(getContext(), "No title entered", Toast.LENGTH_LONG);
+                    toast.show();
+                    return;
+                }
                 //SQL STUFF
 
                 LibraryDbHelper mDbHelper = new LibraryDbHelper(getContext());
