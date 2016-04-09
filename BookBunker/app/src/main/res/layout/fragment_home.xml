@@ -2,8 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="neagucristian.bookbunker.HomeFragment">
+    tools:context="neagucristian.bookbunker.HomeFragment"
+    android:layout_marginTop="48dp">
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,7 +24,8 @@
             android:id="@+id/home_welcome"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="46dp" />
+            android:layout_marginTop="46dp"
+            android:fontFamily="sans-serif-thin"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,7 +37,8 @@
             android:id="@+id/home_countText1"
             android:layout_marginTop="40dp"
             android:layout_below="@+id/home_welcome"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-thin"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,7 +49,8 @@
             android:text="###"
             android:id="@+id/home_countNumber"
             android:layout_below="@+id/home_countText1"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-thin"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -53,7 +61,9 @@
             android:text="@string/home_countText2"
             android:id="@+id/home_countText2"
             android:layout_below="@+id/home_countNumber"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-thin"
+            />
     </RelativeLayout>
-
+    </ScrollView>
 </FrameLayout>

@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="neagucristian.bookbunker.LibraryFragment">
+    tools:context="neagucristian.bookbunker.LibraryFragment"
+    android:layout_marginTop="54dp">
 
     <ListView
         android:layout_width="match_parent"

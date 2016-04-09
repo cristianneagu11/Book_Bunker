@@ -3,6 +3,7 @@ package neagucristian.bookbunker;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -64,6 +66,11 @@ public class EntryFragment extends android.support.v4.app.Fragment {
                 title.setText("");
                 comment.setText("");
                 rating.setRating(0);
+
+                if (rootView != null) {
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(rootView.getWindowToken(), 0);
+                }
 
                 Snackbar snack = Snackbar.make(v, "Entry added", Snackbar.LENGTH_LONG);
                 snack.show();

@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="neagucristian.bookbunker.EntryFragment"
-    android:id="@+id/entry_fragment">
+    android:id="@+id/entry_fragment"
+    android:layout_marginTop="48dp">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="match_parent"
@@ -26,7 +27,8 @@
                 android:text="@string/entry_authorView"
                 android:id="@+id/authorView"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif-thin"/>
 
             <EditText
                 android:layout_width="wrap_content"
@@ -41,7 +43,10 @@
                 android:clickable="true"
                 android:maxLines="1"
                 android:maxLength="32"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:fontFamily="sans-serif-thin"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -50,7 +55,8 @@
                 android:text="@string/entry_titleView"
                 android:id="@+id/entry_titleView"
                 android:layout_below="@+id/entry_authorEdit"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif-thin"/>
 
             <EditText
                 android:layout_width="wrap_content"
@@ -64,7 +70,10 @@
                 android:maxLines="1"
                 android:maxLength="32"
                 android:hint="@string/entry_titleHint"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:singleLine="true"
+                android:inputType="textCapSentences"
+                android:fontFamily="sans-serif-thin"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -73,12 +82,13 @@
                 android:text="@string/entry_commentView"
                 android:id="@+id/entry_commentView"
                 android:layout_below="@+id/entry_titleEdit"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif-thin"/>
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
+                android:inputType="textMultiLine|textCapSentences"
                 android:ems="10"
                 android:id="@+id/entry_commentEdit"
                 android:layout_below="@+id/entry_commentView"
@@ -89,7 +99,9 @@
                 android:hint="@string/entry_commentHint"
                 android:maxLines="5"
                 android:maxLength="500"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:fontFamily="sans-serif-thin"
+                />
 
             <RatingBar
                 android:layout_width="wrap_content"
@@ -109,14 +121,16 @@
                 android:id="@+id/entry_addButton"
                 android:layout_below="@+id/ratingBar"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true"
+                android:fontFamily="sans-serif-thin"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/entry_clearButton"
                 android:id="@+id/entry_clearButton"
-                android:layout_below="@+id/ratingBar"/>
+                android:layout_below="@+id/ratingBar"
+                android:fontFamily="sans-serif-thin"/>
 
         </RelativeLayout>
 

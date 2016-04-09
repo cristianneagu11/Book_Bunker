@@ -7,7 +7,7 @@ import neagucristian.bookbunker.LibraryContract.BookEntry;
 
 public class LibraryDbHelper extends SQLiteOpenHelper{
     
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     static final String DATABASE_NAME = "books.db";
 
@@ -22,18 +22,13 @@ public class LibraryDbHelper extends SQLiteOpenHelper{
                 BookEntry.COLUMN_AUTHOR + " TEXT NOT NULL," +
                 BookEntry.COLUMN_TITLE + " TEXT NOT NULL," +
                 BookEntry.COLUMN_COMMENT + " TEXT," +
-                BookEntry.COLUMN_RATING + " FLOAT NOT NULL);";
+                BookEntry.COLUMN_RATING + " INTEGER NOT NULL);";
 
         sqLiteDatabase.execSQL(SQL_CREATE_LOCATION_TABLE);
     }
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        // This database is only a cache for online data, so its upgrade policy is
-        // to simply to discard the data and start over
-        // Note that this only fires if you change the version number for your database.
-        // It does NOT depend on the version number for your application.
-        // If you want to update the schema without wiping data, commenting out the next 2 lines
-        // should be your top priority before modifying this method.
+        // TO-DO REMOVE THESE LINES
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + BookEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }

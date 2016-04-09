@@ -7,18 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import neagucristian.bookbunker.LibraryContract.BookEntry;
 
 public class LibraryFragment extends android.support.v4.app.Fragment {
 
-    ArrayAdapter<String> adapter;
 
     public LibraryFragment() {
     }
@@ -56,26 +56,17 @@ public class LibraryFragment extends android.support.v4.app.Fragment {
                 sortOrder
         );
         ListView list = (ListView) rootView.findViewById(R.id.library_list);
-        ArrayAdapter<String> library = new ArrayAdapter<String>(
-                getActivity(),
-                R.layout.list_item_book,
-                R.id.list_item_book_textview,
-                new ArrayList<String>()
-        );
 
-        String[] data;
+
+        ArrayList<ListEntry> objects = new ArrayList<ListEntry>();
+        ListEntry object;
         if(c != null) {
             while(c.moveToNext()) {
-                data = new String[4];
-                data[0] = Integer.toString(c.getInt(0));
-                data[1] = c.getString(1);
-                data[2] = c.getString(2);
-                data[3] = Float.toString(c.getInt(3));
-                library.add(data[0] + " " + data[1] + " " + data[2] + " "
-                        + data[3]);
+                object = new ListEntry(c.getInt(0), c.getString(1), c.getString(2), c.getInt(3));
+                objects.add(object);
             }
-            list.setAdapter(library);
-
+        ListAdapter adapter = new ListAdapter(getContext(), objects);
+        list.setAdapter(adapter);
         }
         c.close();
         db.close();

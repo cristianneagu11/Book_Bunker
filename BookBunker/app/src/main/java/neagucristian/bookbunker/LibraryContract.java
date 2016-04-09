@@ -21,7 +21,6 @@ public class LibraryContract {
         public static final String CONTENT_ITEM_TYPE =
                 ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_BOOK;
 
-        // Table name
         public static final String TABLE_NAME = "book";
 
         public static final String COLUMN_AUTHOR = "author";
