@@ -7,7 +7,7 @@ import neagucristian.bookbunker.LibraryContract.BookEntry;
 
 public class LibraryDbHelper extends SQLiteOpenHelper{
     
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     static final String DATABASE_NAME = "books.db";
 
@@ -22,7 +22,8 @@ public class LibraryDbHelper extends SQLiteOpenHelper{
                 BookEntry.COLUMN_AUTHOR + " TEXT NOT NULL," +
                 BookEntry.COLUMN_TITLE + " TEXT NOT NULL," +
                 BookEntry.COLUMN_COMMENT + " TEXT," +
-                BookEntry.COLUMN_RATING + " INTEGER NOT NULL);";
+                BookEntry.COLUMN_RATING + " INTEGER NOT NULL," +
+                BookEntry.COLUMN_PHOTO + " BLOB);";
 
         sqLiteDatabase.execSQL(SQL_CREATE_LOCATION_TABLE);
     }

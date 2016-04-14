@@ -3,14 +3,9 @@ package neagucristian.bookbunker;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.hardware.SensorManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -44,7 +39,16 @@ public class EntryFragment extends android.support.v4.app.Fragment {
                 EditText title = (EditText) rootView.findViewById(R.id.entry_titleEdit);
                 EditText comment = (EditText) rootView.findViewById(R.id.entry_commentEdit);
                 RatingBar rating = (RatingBar) rootView.findViewById(R.id.ratingBar);
-
+//                Button takePhoto = (Button) rootView.findViewById(R.id.entry_takePhoto);
+//                takePhoto.setOnClickListener(new View.OnClickListener() {
+//                    public void onClick(View v) {
+//                        int REQUEST_IMAGE_CAPTURE = 1;
+//                        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+//                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+//                        }
+//                    }
+//                });
                 if(title.getText().length()==0) {
                     Toast toast = Toast.makeText(getContext(), "No title entered", Toast.LENGTH_LONG);
                     toast.show();
@@ -59,6 +63,7 @@ public class EntryFragment extends android.support.v4.app.Fragment {
                 values.put(BookEntry.COLUMN_TITLE, title.getText().toString());
                 values.put(BookEntry.COLUMN_COMMENT, comment.getText().toString());
                 values.put(BookEntry.COLUMN_RATING, rating.getRating());
+//                values.put(BookEntry.COLUMN_PHOTO, )
 
                 db.insert(
                         BookEntry.TABLE_NAME,

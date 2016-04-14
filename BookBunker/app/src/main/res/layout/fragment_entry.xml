@@ -107,12 +107,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ratingBar"
-                android:layout_below="@+id/entry_commentEdit"
-                android:layout_centerHorizontal="true"
                 android:numStars="5"
                 android:outlineProvider="bounds"
                 android:nestedScrollingEnabled="true"
-                android:stepSize="1" />
+                android:stepSize="1"
+                android:layout_below="@+id/entry_takePhoto"
+                android:layout_centerHorizontal="true" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -131,6 +131,15 @@
                 android:id="@+id/entry_clearButton"
                 android:layout_below="@+id/ratingBar"
                 android:fontFamily="sans-serif-thin"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/entry_takePhoto"
+                android:fontFamily="sans-serif-thin"
+                android:id="@+id/entry_takePhoto"
+                android:layout_below="@+id/entry_commentEdit"
+                android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
 
