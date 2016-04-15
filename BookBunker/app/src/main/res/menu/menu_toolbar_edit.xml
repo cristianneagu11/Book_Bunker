@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/edit_reject"
+        android:title="@string/edit_reject"
+        app:showAsAction="always"
+        android:icon="@android:drawable/ic_input_delete"/>
+    <item
+        android:id="@+id/edit_accept"
+        android:title="@string/edit_accept"
+        app:showAsAction="always"
+        android:icon="@android:drawable/ic_input_add"/>
+
+</menu>

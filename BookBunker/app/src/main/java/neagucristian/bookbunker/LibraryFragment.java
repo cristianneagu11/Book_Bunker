@@ -20,6 +20,7 @@ import neagucristian.bookbunker.LibraryContract.BookEntry;
 
 public class LibraryFragment extends android.support.v4.app.Fragment {
 
+    private ListAdapter adapter;
 
     public LibraryFragment() {
     }
@@ -66,7 +67,7 @@ public class LibraryFragment extends android.support.v4.app.Fragment {
                 object = new ListEntry(c.getInt(0), c.getString(1), c.getString(2), c.getInt(3));
                 objects.add(object);
             }
-        ListAdapter adapter = new ListAdapter(getContext(), objects);
+        adapter = new ListAdapter(getContext(), objects);
         list.setAdapter(adapter);
         View emptyView = rootView.findViewById(R.id.library_oops);
             list.setEmptyView(emptyView);
@@ -74,11 +75,12 @@ public class LibraryFragment extends android.support.v4.app.Fragment {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                position += 1;
+                int id = adapter.getItem(position).getId();
                 android.support.v4.app.Fragment fragment = null;
-                fragment = (android.support.v4.app.Fragment) ItemFragment.newInstance(position);
+                fragment = (android.support.v4.app.Fragment) ItemFragment.newInstance(id);
                 FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.flcontainer, fragment).commit();
+                fragmentManager.beginTransaction().replace(R.id.flcontainer, fragment)
+                .addToBackStack(null).commit();
             }
         });
 
