@@ -6,6 +6,7 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.Rating;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -101,20 +103,26 @@ public class EditFragment extends android.support.v4.app.Fragment {
             RatingBar rating = (RatingBar) getActivity().findViewById(R.id.edit_ratingBar);
             ContentValues values = new ContentValues();
 
-
-
             values.put(LibraryContract.BookEntry.COLUMN_AUTHOR, author.getText().toString());
             values.put(LibraryContract.BookEntry.COLUMN_TITLE, title.getText().toString());
             values.put(LibraryContract.BookEntry.COLUMN_COMMENT, comment.getText().toString());
             values.put(LibraryContract.BookEntry.COLUMN_RATING, rating.getRating());
 
-
-
             db.update(LibraryContract.BookEntry.TABLE_NAME, values, "_id="+Integer.toString(id), null);
+
+            InputMethodManager inputMethodManager = (InputMethodManager)  getActivity().getSystemService(MainActivity.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+
+            Snackbar snack = Snackbar.make(getView(), "Information updated", Snackbar.LENGTH_SHORT);
+            snack.show();
+
             getActivity().getSupportFragmentManager().popBackStack();
         }
-        if (id == R.id.edit_reject) {
+        if (idItem == R.id.edit_reject) {
+            InputMethodManager inputMethodManager = (InputMethodManager)  getActivity().getSystemService(MainActivity.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getView().getWindowToken(), 0);
             getActivity().getSupportFragmentManager().popBackStack();
+
         }
         return super.onOptionsItemSelected(item);
     }

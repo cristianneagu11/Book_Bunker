@@ -1,10 +1,13 @@
 package neagucristian.bookbunker;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -93,7 +96,7 @@ public class ItemFragment extends android.support.v4.app.Fragment {
             }
             photo.setImageBitmap(photoBitmap);
         }
-
+        db.close();
         c.close();
         return rootView;
     }
@@ -116,22 +119,47 @@ public class ItemFragment extends android.support.v4.app.Fragment {
                     .addToBackStack(null).commit();
         }
         if (id == R.id.menu_delete) {
-            LibraryDbHelper mDbHelper = new LibraryDbHelper(getContext());
-            SQLiteDatabase db = mDbHelper.getReadableDatabase();
-            db.delete(LibraryContract.BookEntry.TABLE_NAME,
-                    LibraryContract.BookEntry._ID + "=" + Integer.toString(position),
-                    null);
 
-            android.support.v4.app.Fragment fragment = null;
-            Class fragmentClass = LibraryFragment.class;
-            try {
-                fragment = (android.support.v4.app.Fragment) fragmentClass.newInstance();
-            } catch (java.lang.InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-            getActivity().getSupportFragmentManager().popBackStack();
+            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            LibraryDbHelper mDbHelper = new LibraryDbHelper(getContext());
+                            SQLiteDatabase db = mDbHelper.getReadableDatabase();
+                            db.delete(LibraryContract.BookEntry.TABLE_NAME,
+                                    LibraryContract.BookEntry._ID + "=" + Integer.toString(position),
+                                    null);
+                            db.close();
+                            android.support.v4.app.Fragment fragment = null;
+                            Class fragmentClass = LibraryFragment.class;
+                            try {
+                                fragment = (android.support.v4.app.Fragment) fragmentClass.newInstance();
+                            } catch (java.lang.InstantiationException e) {
+                                e.printStackTrace();
+                            } catch (IllegalAccessException e) {
+                                e.printStackTrace();
+                            }
+                            Snackbar snack = Snackbar.make(getView(), "Entry deleted", Snackbar.LENGTH_SHORT);
+                            snack.show();
+                            getActivity().getSupportFragmentManager().popBackStack();
+                            break;
+
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            //No button clicked
+                            break;
+                    }
+                }
+            };
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
+                    .setNegativeButton("No", dialogClickListener).show();
+
+
+
+
+
         }
         return super.onOptionsItemSelected(item);
     }

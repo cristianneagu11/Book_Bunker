@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class SettingsFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
 
         ListView list = (ListView) rootView.findViewById(R.id.settings_list);
         ArrayList<String> settings = new ArrayList<String>();
@@ -60,8 +61,8 @@ public class SettingsFragment extends android.support.v4.app.Fragment {
                                     String clearDBQuery = "DELETE FROM " + LibraryContract.BookEntry.TABLE_NAME;
                                     db.execSQL(clearDBQuery);
                                     db.close();
-                                    Toast toast = Toast.makeText(getContext(), "Database deleted", Toast.LENGTH_LONG);
-                                    toast.show();
+                                    Snackbar snack = Snackbar.make(rootView, "Database deleted", Snackbar.LENGTH_SHORT);
+                                    snack.show();
                                     break;
 
                                 case DialogInterface.BUTTON_NEGATIVE:
@@ -95,10 +96,11 @@ public class SettingsFragment extends android.support.v4.app.Fragment {
                             }
                         }
                     } catch (Exception e) {
-
+                        Snackbar snack = Snackbar.make(rootView, "Error restoring!!!", Snackbar.LENGTH_SHORT);
+                        snack.show();
                     }
-                    Toast toast = Toast.makeText(getContext(), "Database saved on internal memory", Toast.LENGTH_LONG);
-                    toast.show();
+                    Snackbar snack = Snackbar.make(rootView, "Database backup complete", Snackbar.LENGTH_SHORT);
+                    snack.show();
                 }
                 if (position == 3) {
                     DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -129,12 +131,14 @@ public class SettingsFragment extends android.support.v4.app.Fragment {
                                 dst.transferFrom(src, 0, src.size());
                                 src.close();
                                 dst.close();
+                                Snackbar snack = Snackbar.make(rootView, "Database restored", Snackbar.LENGTH_SHORT);
+                                snack.show();
                             }
                         }
                     } catch (Exception e) {
+                        Snackbar snack = Snackbar.make(rootView, "Error restoring!!!", Snackbar.LENGTH_SHORT);
+                        snack.show();
                     }
-                    Toast toast = Toast.makeText(getContext(), "Database restored", Toast.LENGTH_LONG);
-                    toast.show();
 
 
                 }

@@ -62,8 +62,8 @@ public class EntryFragment extends android.support.v4.app.Fragment {
 
 
                 if(title.getText().length()==0) {
-                    Toast toast = Toast.makeText(getContext(), "No title entered", Toast.LENGTH_LONG);
-                    toast.show();
+                    Snackbar snack = Snackbar.make(rootView, "No title entered!!!", Snackbar.LENGTH_SHORT);
+                    snack.show();
                     return;
                 }
                 //SQL STUFF
