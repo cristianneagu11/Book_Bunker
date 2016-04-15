@@ -1,5 +1,7 @@
 package neagucristian.bookbunker;
 
+import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -122,7 +124,8 @@ public class EntryFragment extends android.support.v4.app.Fragment {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == CAMERA_REQUEST) {
+        if(requestCode == CAMERA_REQUEST)
+            if(resultCode == Activity.RESULT_OK){
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             int bytes = photo.getByteCount();
             ByteBuffer buffer = ByteBuffer.allocate(bytes);
@@ -131,4 +134,5 @@ public class EntryFragment extends android.support.v4.app.Fragment {
 
         }
     }
+
 }

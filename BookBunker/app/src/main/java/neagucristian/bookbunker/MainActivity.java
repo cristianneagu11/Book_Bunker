@@ -64,15 +64,21 @@ public class MainActivity extends AppCompatActivity
             if (exit) {
                 finish();
             } else {
-                Toast.makeText(this, "Press Back again to Exit.",
-                        Toast.LENGTH_SHORT).show();
-                exit = true;
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        exit = false;
-                    }
-                }, 3 * 1000);
+                android.support.v4.app.FragmentManager fm = this.getSupportFragmentManager();
+                if(fm.getBackStackEntryCount()!=0) {
+                    fm.popBackStack();
+                }
+                else {
+                    Toast.makeText(this, "Press Back again to Exit.",
+                            Toast.LENGTH_SHORT).show();
+                    exit = true;
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            exit = false;
+                        }
+                    }, 1 * 1000);
+                }
 
             }
             ;
@@ -127,7 +133,7 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flcontainer, fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.flcontainer, fragment).addToBackStack(null).commit();
 
 
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
