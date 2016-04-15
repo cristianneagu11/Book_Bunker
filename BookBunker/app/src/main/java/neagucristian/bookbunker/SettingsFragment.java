@@ -22,7 +22,6 @@ import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 
 
-
 public class SettingsFragment extends android.support.v4.app.Fragment {
 
     public SettingsFragment() {
@@ -42,27 +41,27 @@ public class SettingsFragment extends android.support.v4.app.Fragment {
         ArrayList<String> settings = new ArrayList<String>();
         settings.add("Delete database");
         settings.add("Backup database");
+        settings.add("Restore database");
         settings.add("View app info");
         final ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, settings);
         list.setAdapter(adapter);
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1,int position, long arg3)
-            {
-                if(position == 0) {
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                if (position == 0) {
                     DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            switch (which){
+                            switch (which) {
                                 case DialogInterface.BUTTON_POSITIVE:
                                     LibraryDbHelper mDbHelper = new LibraryDbHelper(getContext());
                                     SQLiteDatabase db = mDbHelper.getReadableDatabase();
-                                    String clearDBQuery = "DELETE FROM "+ LibraryContract.BookEntry.TABLE_NAME;
+                                    String clearDBQuery = "DELETE FROM " + LibraryContract.BookEntry.TABLE_NAME;
                                     db.execSQL(clearDBQuery);
                                     db.close();
                                     Toast toast = Toast.makeText(getContext(), "Database deleted", Toast.LENGTH_LONG);
+                                    toast.show();
                                     break;
 
                                 case DialogInterface.BUTTON_NEGATIVE:
@@ -76,13 +75,13 @@ public class SettingsFragment extends android.support.v4.app.Fragment {
                     builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
                             .setNegativeButton("No", dialogClickListener).show();
                 }
-                if(position == 1) {
+                if (position == 1) {
                     try {
                         File sd = Environment.getExternalStorageDirectory();
                         File data = Environment.getDataDirectory();
 
                         if (sd.canWrite()) {
-                            String currentDBPath = "//data//"+getContext().getPackageName()+"//databases//"+"books.db"+"";
+                            String currentDBPath = "//data//" + getContext().getPackageName() + "//databases//" + "books.db" + "";
                             String backupDBPath = "BookBunker.db";
                             File currentDB = new File(data, currentDBPath);
                             File backupDB = new File(sd, backupDBPath);
@@ -101,17 +100,43 @@ public class SettingsFragment extends android.support.v4.app.Fragment {
                     Toast toast = Toast.makeText(getContext(), "Database saved on internal memory", Toast.LENGTH_LONG);
                     toast.show();
                 }
-                if(position == 2) {
+                if (position == 3) {
                     DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                                       return;
+                            return;
                         }
                     };
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setMessage("App developed by Neagu Cristian\nContact:\ncristian_neagu11@yahoo.com")
                             .setPositiveButton("Ok", dialogClickListener)
                             .show();
+                }
+                if (position == 2) {
+                    try {
+                        File sd = Environment.getExternalStorageDirectory();
+                        File data = Environment.getDataDirectory();
+
+                        if (sd.canWrite()) {
+                            String currentDBPath = "//data//" + getContext().getPackageName() + "//databases//" + "books.db" + "";
+                            String backupDBPath = "BookBunker.db";
+                            File currentDB = new File(data, currentDBPath);
+                            File backupDB = new File(sd, backupDBPath);
+
+                            if (currentDB.exists()) {
+                                FileChannel src = new FileInputStream(backupDB).getChannel();
+                                FileChannel dst = new FileOutputStream(currentDB).getChannel();
+                                dst.transferFrom(src, 0, src.size());
+                                src.close();
+                                dst.close();
+                            }
+                        }
+                    } catch (Exception e) {
+                    }
+                    Toast toast = Toast.makeText(getContext(), "Database restored", Toast.LENGTH_LONG);
+                    toast.show();
+
+
                 }
             }
         });

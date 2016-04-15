@@ -2,13 +2,17 @@ package neagucristian.bookbunker;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -47,8 +51,9 @@ public class ItemFragment extends android.support.v4.app.Fragment {
                 LibraryContract.BookEntry.COLUMN_TITLE,
                 LibraryContract.BookEntry.COLUMN_AUTHOR,
                 LibraryContract.BookEntry.COLUMN_COMMENT,
+                LibraryContract.BookEntry.COLUMN_PHOTO,
                 LibraryContract.BookEntry.COLUMN_RATING,
-                //LibraryContract.BookEntry.COLUMN_PHOTO
+
         };
 
         Cursor c = db.query(
@@ -65,14 +70,27 @@ public class ItemFragment extends android.support.v4.app.Fragment {
         TextView title = (TextView) rootView.findViewById(R.id.item_title);
         TextView comment = (TextView) rootView.findViewById(R.id.item_comment);
         RatingBar rating = (RatingBar) rootView.findViewById(R.id.item_rating);
-        //ImageView photo = (ImageView) rootView.findViewById(R.id.item_photo);
+        ImageView photo = (ImageView) rootView.findViewById(R.id.item_photo);
+
         c.moveToNext();
+
         author.setText(c.getString(2));
         title.setText(c.getString(1));
         comment.setText(c.getString(3));
-        rating.setRating(c.getInt(4));
-        //photo.set
+        rating.setRating(c.getInt(5));
 
+        Bitmap photoBitmap;
+        byte[] bytes = c.getBlob(4);
+        if(bytes!=null) {
+            photoBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            if(photoBitmap == null) {
+                Toast warning2 = Toast.makeText(getContext(), "PHOTO NULL", Toast.LENGTH_SHORT);
+                warning2.show();
+            }
+            photo.setImageBitmap(photoBitmap);
+        }
+
+        c.close();
         return rootView;
     }
 
