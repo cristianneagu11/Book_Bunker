@@ -62,7 +62,6 @@ public class EditFragment extends android.support.v4.app.Fragment {
                 LibraryContract.BookEntry.COLUMN_AUTHOR,
                 LibraryContract.BookEntry.COLUMN_RATING,
                 LibraryContract.BookEntry.COLUMN_COMMENT,
-                LibraryContract.BookEntry.COLUMN_PHOTO
         };
         Cursor c = db.query(
                 LibraryContract.BookEntry.TABLE_NAME,

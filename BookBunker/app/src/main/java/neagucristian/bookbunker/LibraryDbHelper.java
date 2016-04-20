@@ -23,8 +23,7 @@ public class LibraryDbHelper extends SQLiteOpenHelper {
                 BookEntry.COLUMN_AUTHOR + " TEXT NOT NULL," +
                 BookEntry.COLUMN_TITLE + " TEXT NOT NULL," +
                 BookEntry.COLUMN_COMMENT + " TEXT," +
-                BookEntry.COLUMN_RATING + " INTEGER NOT NULL," +
-                BookEntry.COLUMN_PHOTO + " BLOB);";
+                BookEntry.COLUMN_RATING + " INTEGER NOT NULL);";
 
         sqLiteDatabase.execSQL(SQL_CREATE_LOCATION_TABLE);
     }

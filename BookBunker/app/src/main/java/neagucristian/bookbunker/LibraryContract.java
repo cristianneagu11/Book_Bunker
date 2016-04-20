@@ -31,8 +31,6 @@ public class LibraryContract {
 
         public static final String COLUMN_RATING = "rating";
 
-        public static final String COLUMN_PHOTO = "photo";
-
         public static Uri buildLocationUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }

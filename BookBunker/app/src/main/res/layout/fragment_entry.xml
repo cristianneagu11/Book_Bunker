@@ -111,19 +111,8 @@
                 android:outlineProvider="bounds"
                 android:nestedScrollingEnabled="true"
                 android:stepSize="1"
-                android:layout_below="@+id/entry_takePhoto"
-                android:layout_centerHorizontal="true" />
-
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/entry_takePhoto"
-                android:fontFamily="sans-serif-thin"
-                android:id="@+id/entry_takePhoto"
                 android:layout_below="@+id/entry_commentEdit"
-                android:layout_centerHorizontal="true"
-                android:visibility="visible"/>
+                android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
 

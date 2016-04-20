@@ -20,7 +20,6 @@
     <string name="entry_commentHint">Bla Bla Yada Yada</string>
     <string name="entry_add">Add entry</string>
     <string name="entry_clear">Clear entry</string>
-    <string name="entry_takePhoto">Cover</string>
     <!--settings-->
     <string name="action_settings">Settings</string>
     <!--home-->

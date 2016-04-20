@@ -30,9 +30,6 @@ import neagucristian.bookbunker.LibraryContract.BookEntry;
 
 public class EntryFragment extends android.support.v4.app.Fragment {
 
-    private static final int REQUEST_IMAGE_CAPTURE = 2500;
-    private ContentValues values = new ContentValues();
-    private byte[] bytePhoto;
     public EntryFragment() {
     }
 
@@ -44,31 +41,11 @@ public class EntryFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         final View rootView = inflater.inflate(R.layout.fragment_entry, container, false);
         setHasOptionsMenu(true);
 
-        Button takePhoto = (Button) rootView.findViewById(R.id.entry_takePhoto);
-        takePhoto.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-            }
-        });
-
         return rootView;
     }
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-            if (resultCode == Activity.RESULT_OK) {
-                Bundle extras = data.getExtras();
-                Bitmap bmp = (Bitmap) extras.get("data");
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                bytePhoto = stream.toByteArray();
-                }
-    }
-
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -94,16 +71,11 @@ public class EntryFragment extends android.support.v4.app.Fragment {
             }
             LibraryDbHelper mDbHelper = new LibraryDbHelper(getContext());
             SQLiteDatabase db = mDbHelper.getWritableDatabase();
-            if(bytePhoto!=null)
-                values.put(BookEntry.COLUMN_PHOTO, bytePhoto);
+            ContentValues values = new ContentValues();
             values.put(BookEntry.COLUMN_AUTHOR, author.getText().toString());
             values.put(BookEntry.COLUMN_TITLE, title.getText().toString());
             values.put(BookEntry.COLUMN_COMMENT, comment.getText().toString());
             values.put(BookEntry.COLUMN_RATING, rating.getRating());
-
-            Toast warning2 = Toast.makeText(getContext(), "A salvat\n" +
-                    values.getAsString(BookEntry.COLUMN_PHOTO), Toast.LENGTH_SHORT);
-            warning2.show();
 
             db.insert(
                     BookEntry.TABLE_NAME,

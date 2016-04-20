@@ -59,24 +59,7 @@
             android:layout_marginTop="100dp"
             android:fontFamily="sans-serif-thin"
             android:text="Comment"
-            android:textColor="#000000"
-            android:textSize="8pt" />
-
-        <ImageView
-            android:id="@+id/item_photo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="fitEnd"
-            android:layout_toEndOf="@+id/item_author"
-            android:layout_alignBottom="@+id/item_comment"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/item_rating"
-            android:paddingRight="5dp"
-            android:src="@android:drawable/ic_menu_gallery"
-            android:visibility="visible" />
+            android:textColor="#000000"/>
 
     </RelativeLayout>
 

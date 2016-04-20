@@ -61,9 +61,7 @@ public class ItemFragment extends android.support.v4.app.Fragment {
                 LibraryContract.BookEntry.COLUMN_TITLE,
                 LibraryContract.BookEntry.COLUMN_AUTHOR,
                 LibraryContract.BookEntry.COLUMN_COMMENT,
-                LibraryContract.BookEntry.COLUMN_PHOTO,
-                LibraryContract.BookEntry.COLUMN_RATING,
-
+                LibraryContract.BookEntry.COLUMN_RATING
         };
 
         Cursor c = db.query(
@@ -80,31 +78,13 @@ public class ItemFragment extends android.support.v4.app.Fragment {
         TextView title = (TextView) rootView.findViewById(R.id.item_title);
         TextView comment = (TextView) rootView.findViewById(R.id.item_comment);
         RatingBar rating = (RatingBar) rootView.findViewById(R.id.item_rating);
-        ImageView photo = (ImageView) rootView.findViewById(R.id.item_photo);
 
         c.moveToNext();
 
         author.setText(c.getString(2));
         title.setText(c.getString(1));
         comment.setText(c.getString(3));
-        rating.setRating(c.getInt(5));
-
-        Bitmap photoBitmap;
-        byte[] bytes = c.getBlob(4);
-        if (bytes != null) {
-            photoBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-//            Toast warning4 = Toast.makeText(getContext(), "smth here", Toast.LENGTH_SHORT);
-//            warning4.show();
-            if (photoBitmap == null) {
-                Toast warning2 = Toast.makeText(getContext(), "PHOTO NULL", Toast.LENGTH_SHORT);
-                warning2.show();
-            }
-            photo.setImageBitmap(photoBitmap);
-        }
-//        else {
-//            Toast warning3 = Toast.makeText(getContext(), "NO BYTES", Toast.LENGTH_SHORT);
-//            warning3.show();
-//        }
+        rating.setRating(c.getInt(4));
 
         db.close();
         c.close();
