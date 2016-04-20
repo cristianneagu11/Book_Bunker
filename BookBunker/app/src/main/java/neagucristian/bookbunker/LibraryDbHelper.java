@@ -3,15 +3,16 @@ package neagucristian.bookbunker;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
 import neagucristian.bookbunker.LibraryContract.BookEntry;
 
-public class LibraryDbHelper extends SQLiteOpenHelper{
-    
+public class LibraryDbHelper extends SQLiteOpenHelper {
+
     private static final int DATABASE_VERSION = 3;
 
     static final String DATABASE_NAME = "books.db";
 
-    public LibraryDbHelper (Context context) {
+    public LibraryDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -27,6 +28,7 @@ public class LibraryDbHelper extends SQLiteOpenHelper{
 
         sqLiteDatabase.execSQL(SQL_CREATE_LOCATION_TABLE);
     }
+
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         // TO-DO REMOVE THESE LINES

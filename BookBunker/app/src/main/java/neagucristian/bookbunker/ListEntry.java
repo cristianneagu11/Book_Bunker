@@ -11,11 +11,11 @@ public class ListEntry {
     private String comment;
 
     public ListEntry(int id, String title, String author, int rating) {
-        this.title=title;
-        this.id=id;
-        this.author=author;
-        this.rating=rating;
-        this.comment=comment;
+        this.title = title;
+        this.id = id;
+        this.author = author;
+        this.rating = rating;
+        this.comment = comment;
     }
 
     public String getTitle() {

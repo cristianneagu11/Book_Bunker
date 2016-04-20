@@ -38,11 +38,10 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        {
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                InputMethodManager inputMethodManager = (InputMethodManager)  getSystemService(MainActivity.INPUT_METHOD_SERVICE);
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(MainActivity.INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
             }
         };
@@ -55,6 +54,8 @@ public class MainActivity extends AppCompatActivity
 
     private boolean exit = false;
 
+
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -65,10 +66,9 @@ public class MainActivity extends AppCompatActivity
                 finish();
             } else {
                 android.support.v4.app.FragmentManager fm = this.getSupportFragmentManager();
-                if(fm.getBackStackEntryCount()!=0) {
+                if (fm.getBackStackEntryCount() != 0) {
                     fm.popBackStack();
-                }
-                else {
+                } else {
                     Toast.makeText(this, "Press Back again to Exit.",
                             Toast.LENGTH_SHORT).show();
                     exit = true;
@@ -85,28 +85,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -115,14 +93,14 @@ public class MainActivity extends AppCompatActivity
         android.support.v4.app.Fragment fragment = null;
         Class fragmentClass = null;
         if (id == R.id.home) {
-            fragmentClass=HomeFragment.class;
+            fragmentClass = HomeFragment.class;
         }
         if (id == R.id.add_entry) {
-            fragmentClass=EntryFragment.class;
+            fragmentClass = EntryFragment.class;
         } else if (id == R.id.library) {
-            fragmentClass=LibraryFragment.class;
+            fragmentClass = LibraryFragment.class;
         } else if (id == R.id.settings) {
-            fragmentClass=SettingsFragment.class;
+            fragmentClass = SettingsFragment.class;
         }
 
         try {
@@ -136,7 +114,7 @@ public class MainActivity extends AppCompatActivity
         fragmentManager.beginTransaction().replace(R.id.flcontainer, fragment).addToBackStack(null).commit();
 
 
-    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

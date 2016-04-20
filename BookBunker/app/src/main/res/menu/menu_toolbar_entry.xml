@@ -3,14 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/edit_reject"
-        android:title="@string/edit_reject"
+        android:id="@+id/entry_clear"
+        android:title="@string/entry_clear"
         app:showAsAction="ifRoom"
         android:icon="@android:drawable/ic_input_delete"/>
     <item
-        android:id="@+id/edit_accept"
-        android:title="@string/edit_accept"
+        android:id="@+id/entry_add"
+        android:title="@string/entry_add"
         app:showAsAction="ifRoom"
         android:icon="@android:drawable/ic_menu_add"/>
-
 </menu>

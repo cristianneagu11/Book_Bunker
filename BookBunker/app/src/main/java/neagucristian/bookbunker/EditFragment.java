@@ -25,11 +25,11 @@ import neagucristian.bookbunker.R;
 public class EditFragment extends android.support.v4.app.Fragment {
 
     private int id;
+
     public EditFragment() {
     }
 
-    public static final EditFragment newInstance(int id)
-    {
+    public static final EditFragment newInstance(int id) {
         EditFragment f = new EditFragment();
         Bundle bdl = new Bundle(2);
         bdl.putInt("id", id);
@@ -40,7 +40,7 @@ public class EditFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        id=getArguments().getInt("id");
+        id = getArguments().getInt("id");
         setHasOptionsMenu(true);
     }
 
@@ -68,7 +68,7 @@ public class EditFragment extends android.support.v4.app.Fragment {
                 LibraryContract.BookEntry.TABLE_NAME,
                 projection,
                 "_id=?",
-                new String[] {Integer.toString(id)},
+                new String[]{Integer.toString(id)},
                 null,
                 null,
                 null
@@ -108,9 +108,9 @@ public class EditFragment extends android.support.v4.app.Fragment {
             values.put(LibraryContract.BookEntry.COLUMN_COMMENT, comment.getText().toString());
             values.put(LibraryContract.BookEntry.COLUMN_RATING, rating.getRating());
 
-            db.update(LibraryContract.BookEntry.TABLE_NAME, values, "_id="+Integer.toString(id), null);
+            db.update(LibraryContract.BookEntry.TABLE_NAME, values, "_id=" + Integer.toString(id), null);
 
-            InputMethodManager inputMethodManager = (InputMethodManager)  getActivity().getSystemService(MainActivity.INPUT_METHOD_SERVICE);
+            InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(MainActivity.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(getView().getWindowToken(), 0);
 
             Snackbar snack = Snackbar.make(getView(), "Information updated", Snackbar.LENGTH_SHORT);
@@ -119,7 +119,7 @@ public class EditFragment extends android.support.v4.app.Fragment {
             getActivity().getSupportFragmentManager().popBackStack();
         }
         if (idItem == R.id.edit_reject) {
-            InputMethodManager inputMethodManager = (InputMethodManager)  getActivity().getSystemService(MainActivity.INPUT_METHOD_SERVICE);
+            InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(MainActivity.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(getView().getWindowToken(), 0);
             getActivity().getSupportFragmentManager().popBackStack();
 

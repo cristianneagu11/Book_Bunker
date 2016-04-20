@@ -40,7 +40,7 @@ public class ListAdapter extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        if(convertView == null) {
+        if (convertView == null) {
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.list_item_book, null);
             holder.textView1 = (TextView) convertView.findViewById(R.id.list_item_textView1);
@@ -50,8 +50,8 @@ public class ListAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.textView1.setText(objects.get(position).getId()+". "+objects.get(position).getTitle());
-        holder.textView2.setText("by "+objects.get(position).getAuthor());
+        holder.textView1.setText(objects.get(position).getId() + ". " + objects.get(position).getTitle());
+        holder.textView2.setText("by " + objects.get(position).getAuthor());
         holder.rating.setRating(objects.get(position).getRating());
         return convertView;
     }

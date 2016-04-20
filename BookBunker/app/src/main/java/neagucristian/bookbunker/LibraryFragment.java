@@ -80,7 +80,7 @@ public class LibraryFragment extends android.support.v4.app.Fragment {
                 fragment = (android.support.v4.app.Fragment) ItemFragment.newInstance(id);
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.flcontainer, fragment)
-                .addToBackStack(null).commit();
+                        .addToBackStack(null).commit();
             }
         });
 
