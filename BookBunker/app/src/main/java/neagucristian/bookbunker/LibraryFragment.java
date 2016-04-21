@@ -36,27 +36,10 @@ public class LibraryFragment extends android.support.v4.app.Fragment {
 
         final View rootView = inflater.inflate(R.layout.fragment_library, container, false);
 
-        LibraryDbHelper mDbHelper = new LibraryDbHelper(getContext());
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+        BookProvider provider = new BookProvider(getContext());
 
-        String[] projection = {
-                BookEntry._ID,
-                BookEntry.COLUMN_TITLE,
-                BookEntry.COLUMN_AUTHOR,
-                BookEntry.COLUMN_RATING
-        };
+        Cursor c = provider.getEntireList();
 
-        String sortOrder = BookEntry._ID + " ASC";
-
-        Cursor c = db.query(
-                BookEntry.TABLE_NAME,
-                projection,
-                null,
-                null,
-                null,
-                null,
-                sortOrder
-        );
         ListView list = (ListView) rootView.findViewById(R.id.library_list);
 
 
@@ -64,7 +47,7 @@ public class LibraryFragment extends android.support.v4.app.Fragment {
         ListEntry object;
         if(c != null) {
             while(c.moveToNext()) {
-                object = new ListEntry(c.getInt(0), c.getString(1), c.getString(2), c.getInt(3));
+                object = new ListEntry(c.getInt(0), c.getString(1), c.getString(2), c.getInt(4));
                 objects.add(object);
             }
         adapter = new ListAdapter(getContext(), objects);
@@ -85,9 +68,7 @@ public class LibraryFragment extends android.support.v4.app.Fragment {
         });
 
         c.close();
-        db.close();
-
-
+        provider.closer();
         return rootView;
     }
 

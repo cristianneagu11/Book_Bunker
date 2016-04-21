@@ -34,12 +34,12 @@ public class HomeFragment extends android.support.v4.app.Fragment {
 
         TextView numberOfBooks = (TextView) rootView.findViewById(R.id.home_countNumber);
 
-        LibraryDbHelper dbHelper = new LibraryDbHelper(getContext());
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        long cnt = DatabaseUtils.queryNumEntries(db, LibraryContract.BookEntry.TABLE_NAME);
-        db.close();
-        numberOfBooks.setText(Long.toString(cnt));
+        BookProvider provider = new BookProvider(getContext());
 
+        long cnt = provider.getCount();
+
+        numberOfBooks.setText(Long.toString(cnt));
+        provider.closer();
         return rootView;
     }
 

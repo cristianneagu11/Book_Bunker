@@ -53,26 +53,9 @@ public class ItemFragment extends android.support.v4.app.Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_item, container, false);
         setHasOptionsMenu(true);
 
-        LibraryDbHelper mDbHelper = new LibraryDbHelper(getContext());
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+        BookProvider provider = new BookProvider(getContext());
 
-        String[] projection = {
-                LibraryContract.BookEntry._ID,
-                LibraryContract.BookEntry.COLUMN_TITLE,
-                LibraryContract.BookEntry.COLUMN_AUTHOR,
-                LibraryContract.BookEntry.COLUMN_COMMENT,
-                LibraryContract.BookEntry.COLUMN_RATING
-        };
-
-        Cursor c = db.query(
-                LibraryContract.BookEntry.TABLE_NAME,
-                projection,
-                "_id=?",
-                new String[]{Integer.toString(position)},
-                null,
-                null,
-                null
-        );
+        Cursor c = provider.getById(position);
 
         TextView author = (TextView) rootView.findViewById(R.id.item_author);
         TextView title = (TextView) rootView.findViewById(R.id.item_title);
@@ -86,9 +69,8 @@ public class ItemFragment extends android.support.v4.app.Fragment {
         comment.setText(c.getString(3));
         rating.setRating(c.getInt(4));
 
-        db.close();
         c.close();
-
+        provider.closer();
         return rootView;
     }
 

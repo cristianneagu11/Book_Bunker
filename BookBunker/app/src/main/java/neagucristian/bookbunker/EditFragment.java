@@ -55,37 +55,22 @@ public class EditFragment extends android.support.v4.app.Fragment {
 
         final View rootView = inflater.inflate(R.layout.fragment_edit, container, false);
 
-        LibraryDbHelper dbHelper = new LibraryDbHelper(getContext());
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String[] projection = {
-                LibraryContract.BookEntry.COLUMN_TITLE,
-                LibraryContract.BookEntry.COLUMN_AUTHOR,
-                LibraryContract.BookEntry.COLUMN_RATING,
-                LibraryContract.BookEntry.COLUMN_COMMENT,
-        };
-        Cursor c = db.query(
-                LibraryContract.BookEntry.TABLE_NAME,
-                projection,
-                "_id=?",
-                new String[]{Integer.toString(id)},
-                null,
-                null,
-                null
-        );
+        BookProvider provider = new BookProvider(getContext());
+
+        Cursor c = provider.getById(id);
 
         EditText title = (EditText) rootView.findViewById(R.id.edit_titleEdit);
         EditText author = (EditText) rootView.findViewById(R.id.edit_authorEdit);
         EditText comment = (EditText) rootView.findViewById(R.id.edit_commentEdit);
         RatingBar rating = (RatingBar) rootView.findViewById(R.id.edit_ratingBar);
         c.moveToNext();
-        title.setText(c.getString(0));
-        author.setText(c.getString(1));
+        title.setText(c.getString(1));
+        author.setText(c.getString(2));
         comment.setText(c.getString(3));
-        rating.setRating(c.getInt(2));
+        rating.setRating(c.getInt(4));
 
         c.close();
-        db.close();
-
+        provider.closer();
         return rootView;
     }
 
