@@ -5,7 +5,7 @@
         <item
             android:id="@+id/home"
             android:icon="@drawable/logo_black"
-            android:title="@string/drawer_home"/>
+            android:title="@string/drawer_home" />
         <item
             android:id="@+id/add_entry"
             android:icon="@android:drawable/ic_input_add"
@@ -13,11 +13,11 @@
         <item
             android:id="@+id/library"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/drawer_library" />
+            android:title="@string/drawer_library"/>
         <item
             android:id="@+id/settings"
             android:icon="@drawable/ic_menu_manage"
-            android:title="@string/drawer_settings" />
+            android:title="@string/drawer_settings"/>
     </group>
 
 </menu>

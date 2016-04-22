@@ -92,6 +92,21 @@ public class BookProvider {
         return c;
     }
 
+    public boolean getDuplicateState (String author, String title) {
+        String Query = "Select * from " + BookEntry.TABLE_NAME + " where " +
+                BookEntry.COLUMN_AUTHOR +
+                " = " + author + " and " +
+                BookEntry.COLUMN_TITLE +
+                " = " + title;
+        Cursor cursor = db.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
+    }
+
     public long getCount() {
         long cnt = DatabaseUtils.queryNumEntries(db, LibraryContract.BookEntry.TABLE_NAME);
         return cnt;

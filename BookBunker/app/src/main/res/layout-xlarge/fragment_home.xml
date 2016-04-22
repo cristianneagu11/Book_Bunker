@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="neagucristian.bookbunker.HomeFragment"
+
     android:layout_marginTop="48dp">
 
 
@@ -17,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16pt"
+            android:textSize="55sp"
             android:textAlignment="center"
             android:textColor="#000000"
             android:text="@string/home_welcome"
@@ -33,7 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12pt"
+            android:textSize="50sp"
             android:textAlignment="center"
             android:textColor="#4B4B4B"
             android:text="@string/home_countText1"
@@ -49,7 +50,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12pt"
+            android:textSize="50sp"
             android:textAlignment="center"
             android:textColor="#4B4B4B"
             android:text="###"
@@ -64,7 +65,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12pt"
+            android:textSize="50sp"
             android:textAlignment="center"
             android:textColor="#4B4B4B"
             android:text="@string/home_countText2"

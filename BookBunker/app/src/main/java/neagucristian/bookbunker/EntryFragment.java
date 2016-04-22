@@ -69,6 +69,18 @@ public class EntryFragment extends android.support.v4.app.Fragment {
                 snack.show();
                 return true;
             }
+
+            BookProvider provider = new BookProvider(getContext());
+
+            if (provider.getDuplicateState(author.getText().toString(), title.getText().toString())) {
+                Snackbar snack = Snackbar.make(getView(), "Duplicate entry!!!", Snackbar.LENGTH_SHORT);
+                snack.show();
+                provider.closer();
+                return true;
+            }
+
+            provider.closer();
+
             LibraryDbHelper mDbHelper = new LibraryDbHelper(getContext());
             SQLiteDatabase db = mDbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();

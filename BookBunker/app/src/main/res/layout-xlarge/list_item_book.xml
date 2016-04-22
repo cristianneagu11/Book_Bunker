@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:id="@+id/list_item_textView1"
-        android:textSize="9.8pt"
+        android:textSize="30sp"
         android:fontFamily="sans-serif-light"
         android:textColor="#000000"/>
     <RatingBar style="?android:attr/ratingBarStyleSmall"
@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:id="@+id/list_item_textView2"
-        android:textSize="8pt"
+        android:textSize="30sp"
         android:fontFamily="sans-serif-light"
         android:layout_below="@id/list_item_textView1"/>
 </RelativeLayout>
