@@ -93,12 +93,20 @@ public class BookProvider {
     }
 
     public boolean getDuplicateState (String author, String title) {
-        String Query = "Select * from " + BookEntry.TABLE_NAME + " where " +
-                BookEntry.COLUMN_AUTHOR +
-                " = " + author + " and " +
-                BookEntry.COLUMN_TITLE +
-                " = " + title;
-        Cursor cursor = db.rawQuery(Query, null);
+        String[] projection = {BookEntry._ID};
+        String selection = BookEntry.COLUMN_AUTHOR+"=? AND "+BookEntry.COLUMN_TITLE+"=?";
+        Cursor cursor = db.query(
+                BookEntry.TABLE_NAME,
+                projection,
+                selection,
+                new String[] {
+                        author,
+                        title
+                },
+                null,
+                null,
+                null
+        );
         if(cursor.getCount() <= 0){
             cursor.close();
             return false;

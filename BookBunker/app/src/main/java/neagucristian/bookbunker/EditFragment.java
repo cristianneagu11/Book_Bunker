@@ -1,6 +1,7 @@
 package neagucristian.bookbunker;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
@@ -79,12 +80,35 @@ public class EditFragment extends android.support.v4.app.Fragment {
 
         int idItem = item.getItemId();
         if (idItem == R.id.edit_accept) {
+
+
+
             LibraryDbHelper dbHelper = new LibraryDbHelper(getContext());
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             EditText title = (EditText) getActivity().findViewById(R.id.edit_titleEdit);
             EditText author = (EditText) getActivity().findViewById(R.id.edit_authorEdit);
             EditText comment = (EditText) getActivity().findViewById(R.id.edit_commentEdit);
             RatingBar rating = (RatingBar) getActivity().findViewById(R.id.edit_ratingBar);
+
+            if (title.getText().length() == 0) {
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                Snackbar snack = Snackbar.make(getView(), "No title entered!!!", Snackbar.LENGTH_LONG);
+                snack.show();
+                return true;
+            }
+
+            BookProvider provider = new BookProvider(getContext());
+
+            if (provider.getDuplicateState(author.getText().toString(), title.getText().toString())) {
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                Snackbar snack = Snackbar.make(getView(), "Duplicate entry!!!", Snackbar.LENGTH_LONG);
+                snack.show();
+                provider.closer();
+                return true;
+            }
+
             ContentValues values = new ContentValues();
 
             values.put(LibraryContract.BookEntry.COLUMN_AUTHOR, author.getText().toString());

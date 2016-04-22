@@ -65,7 +65,9 @@ public class EntryFragment extends android.support.v4.app.Fragment {
 
         if (id == R.id.entry_add) {
             if (title.getText().length() == 0) {
-                Snackbar snack = Snackbar.make(getView(), "No title entered!!!", Snackbar.LENGTH_SHORT);
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                Snackbar snack = Snackbar.make(getView(), "No title entered!!!", Snackbar.LENGTH_LONG);
                 snack.show();
                 return true;
             }
@@ -73,7 +75,9 @@ public class EntryFragment extends android.support.v4.app.Fragment {
             BookProvider provider = new BookProvider(getContext());
 
             if (provider.getDuplicateState(author.getText().toString(), title.getText().toString())) {
-                Snackbar snack = Snackbar.make(getView(), "Duplicate entry!!!", Snackbar.LENGTH_SHORT);
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                Snackbar snack = Snackbar.make(getView(), "Duplicate entry!!!", Snackbar.LENGTH_LONG);
                 snack.show();
                 provider.closer();
                 return true;
@@ -118,7 +122,7 @@ public class EntryFragment extends android.support.v4.app.Fragment {
             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
 
-            Snackbar snack = Snackbar.make(getView(), "Entry cleared", Snackbar.LENGTH_SHORT);
+            Snackbar snack = Snackbar.make(getView(), "Entry cleared", Snackbar.LENGTH_LONG);
             snack.show();
         }
         return super.onOptionsItemSelected(item);
