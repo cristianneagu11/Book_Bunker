@@ -99,14 +99,17 @@ public class EditFragment extends android.support.v4.app.Fragment {
             }
 
             BookProvider provider = new BookProvider(getContext());
-
-            if (provider.getDuplicateState(author.getText().toString(), title.getText().toString())) {
-                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-                Snackbar snack = Snackbar.make(getView(), "Duplicate entry!!!", Snackbar.LENGTH_LONG);
-                snack.show();
-                provider.closer();
-                return true;
+            Cursor c = provider.getById(id);
+            c.moveToNext();
+            if (!c.getString(1).equals(title.getText().toString())) {
+                if (provider.getDuplicateState(author.getText().toString(), title.getText().toString())) {
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                    Snackbar snack = Snackbar.make(getView(), "Duplicate entry!!!", Snackbar.LENGTH_LONG);
+                    snack.show();
+                    provider.closer();
+                    return true;
+                }
             }
 
             ContentValues values = new ContentValues();

@@ -3,12 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="neagucristian.bookbunker.LibraryFragment"
-    android:layout_marginTop="56dp">
+    android:layout_marginTop="56dp"
+    android:background="@drawable/listbackground">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/library_list">
+        android:id="@+id/library_list"
+        android:layout_marginTop="65dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="50dp">
 
     </ListView>
 

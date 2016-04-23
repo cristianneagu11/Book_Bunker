@@ -9,7 +9,7 @@
     <string name="drawer_settings">Settings</string>
     <string name="drawer_share">Share</string>
     <string name="drawer_appname">Book Bunker</string>
-    <string name="drawer_version">V0.91</string>
+    <string name="drawer_version">V1.0</string>
     <string name="drawer_home">Home</string>
     <!--entry page-->
     <string name="entry_authorView">Author:</string>

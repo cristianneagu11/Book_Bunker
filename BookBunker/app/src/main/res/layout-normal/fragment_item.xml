@@ -3,13 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="48dp"
-    tools:context="neagucristian.bookbunker.ItemFragment">
+    tools:context="neagucristian.bookbunker.ItemFragment"
+    android:background="@drawable/itemfragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="left|center_vertical"
-        android:layout_margin="20dp">
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="20dp">
 
 
         <TextView
@@ -21,10 +23,10 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="12dp"
-            android:fontFamily="sans-serif-thin"
-            android:text="Titlu"
+            android:fontFamily="sans-serif"
+            android:text="Title"
             android:textColor="#000000"
-            android:textSize="25sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/item_author"
@@ -34,10 +36,10 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/item_title"
             android:layout_marginLeft="15dp"
-            android:fontFamily="sans-serif-thin"
+            android:fontFamily="sans-serif"
             android:text="Author"
             android:textColor="#000000"
-            android:textSize="22sp" />
+            android:textSize="25sp" />
 
         <RatingBar
             android:id="@+id/item_rating"
@@ -53,7 +55,7 @@
             android:id="@+id/item_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-thin"
+            android:fontFamily="sans-serif"
             android:text="Comment"
             android:textColor="#000000"
             android:layout_below="@+id/item_rating"

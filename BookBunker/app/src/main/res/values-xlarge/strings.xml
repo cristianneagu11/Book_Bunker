@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Book Bunker</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!--drawer-->
+    <string name="drawer_entry">Add a new entry</string>
+    <string name="drawer_library">Your library</string>
+    <string name="drawer_settings">Settings</string>
+    <string name="drawer_share">Share</string>
+    <string name="drawer_appname">Book Bunker</string>
+    <string name="drawer_version">V1.0</string>
+    <string name="drawer_home">Home</string>
+    <!--entry page-->
+    <string name="entry_authorView">Author:</string>
+    <string name="entry_authorHint">Author McBook</string>
+    <string name="entry_titleView">Title:</string>
+    <string name="entry_titleHint">Titleoo</string>
+    <string name="entry_commentView">Add any comment you have:</string>
+    <string name="entry_commentHint">Bla Bla Yada Yada</string>
+    <string name="entry_add">Add entry</string>
+    <string name="entry_clear">Clear entry</string>
+    <!--settings-->
+    <string name="action_settings">Settings</string>
+    <!--home-->
+    <string name="home_welcome">Hello there, fellow reader!</string>
+    <string name="home_countText1">For now you got only</string>
+    <string name="home_countText2">books read to brag with!</string>
+    <string name="home_share">Share</string>
+    <!--library-->
+    <string name="library_oops">Ooops, come back when you register a book!</string>
+    <!--menu-->
+    <string name="item_edit">Edit</string>
+    <string name="item_delete">Delete</string>
+    <string name="item_share">Share</string>
+    <!--menuedit-->
+    <string name="edit_accept">Accept</string>
+    <string name="edit_reject">Reject</string>
+</resources>

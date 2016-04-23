@@ -63,10 +63,15 @@ public class ItemFragment extends android.support.v4.app.Fragment {
         RatingBar rating = (RatingBar) rootView.findViewById(R.id.item_rating);
 
         c.moveToNext();
-
-        author.setText(c.getString(2));
-        title.setText(c.getString(1));
-        comment.setText(c.getString(3));
+        if(!c.getString(2).equals(""))
+            author.setText(c.getString(2));
+        else author.setText("No author");
+        if(!c.getString(1).equals(""))
+            title.setText(c.getString(1));
+        else author.setText("No title");
+        if(!c.getString(3).equals(""))
+            comment.setText(c.getString(3));
+        else comment.setText("No comment");
         rating.setRating(c.getInt(4));
 
         c.close();

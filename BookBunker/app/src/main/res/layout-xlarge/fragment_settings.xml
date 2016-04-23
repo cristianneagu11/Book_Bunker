@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="58dp"
-    tools:context="neagucristian.bookbunker.SettingsFragment">
+    tools:context="neagucristian.bookbunker.SettingsFragment"
+    android:background="@drawable/listbackground">
     <RelativeLayout
         android:id="@+id/settings_layout"
         android:layout_width="match_parent"
@@ -12,6 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/settings_list"
-        android:layout_gravity="left|top" />
+        android:layout_gravity="left|top"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="50dp"/>
     </RelativeLayout>
 </FrameLayout>

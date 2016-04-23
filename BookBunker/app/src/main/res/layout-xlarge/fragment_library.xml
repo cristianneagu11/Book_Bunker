@@ -5,12 +5,17 @@
     tools:context="neagucristian.bookbunker.LibraryFragment"
     android:layout_marginTop="65dp"
     android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp">
+    android:layout_marginRight="10dp"
+    android:background="@drawable/listbackground">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/library_list">
+        android:id="@+id/library_list"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="50dp">
 
     </ListView>
 
@@ -24,7 +29,7 @@
         android:textAlignment="center"
         android:fontFamily="sans-serif-thin"
         android:textSize="40sp"
-        android:layout_margin="20dp"
+        android:layout_margin="70dp"
         android:visibility="invisible"/>
 
 </FrameLayout>
