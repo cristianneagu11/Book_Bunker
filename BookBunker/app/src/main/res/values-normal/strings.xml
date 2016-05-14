@@ -36,4 +36,7 @@
     <!--menuedit-->
     <string name="edit_accept">Accept</string>
     <string name="edit_reject">Reject</string>
+    <!--notification-->
+    <string name="notification_title">Hey, we miss you, reader…</string>
+    <string name="notification_text">You should read something new!</string>
 </resources>

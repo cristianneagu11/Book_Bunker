@@ -1,7 +1,9 @@
 package neagucristian.bookbunker;
 
+import android.app.AlarmManager;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -39,7 +41,11 @@ public class MainActivity extends AppCompatActivity
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
-
+        Intent intent = new Intent(this, ComeBackNotification.class);
+        PendingIntent pi = PendingIntent.getBroadcast(this.getApplicationContext(), 234324246,
+                intent, 0);
+        AlarmManager mAlarm = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+        mAlarm.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+3*1000, pi);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
