@@ -77,30 +77,46 @@ public class SettingsFragment extends android.support.v4.app.Fragment {
                             .setNegativeButton("No", dialogClickListener).show();
                 }
                 if (position == 1) {
-                    try {
-                        File sd = Environment.getExternalStorageDirectory();
-                        File data = Environment.getDataDirectory();
+                    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (which) {
+                                case DialogInterface.BUTTON_POSITIVE:
+                                    try {
+                                        File sd = Environment.getExternalStorageDirectory();
+                                        File data = Environment.getDataDirectory();
 
-                        if (sd.canWrite()) {
-                            String currentDBPath = "//data//" + getContext().getPackageName() + "//databases//" + "books.db" + "";
-                            String backupDBPath = "BookBunker.db";
-                            File currentDB = new File(data, currentDBPath);
-                            File backupDB = new File(sd, backupDBPath);
+                                        if (sd.canWrite()) {
+                                            String currentDBPath = "//data//" + getContext().getPackageName() + "//databases//" + "books.db" + "";
+                                            String backupDBPath = "BookBunker.db";
+                                            File currentDB = new File(data, currentDBPath);
+                                            File backupDB = new File(sd, backupDBPath);
 
-                            if (currentDB.exists()) {
-                                FileChannel src = new FileInputStream(currentDB).getChannel();
-                                FileChannel dst = new FileOutputStream(backupDB).getChannel();
-                                dst.transferFrom(src, 0, src.size());
-                                src.close();
-                                dst.close();
+                                            if (currentDB.exists()) {
+                                                FileChannel src = new FileInputStream(currentDB).getChannel();
+                                                FileChannel dst = new FileOutputStream(backupDB).getChannel();
+                                                dst.transferFrom(src, 0, src.size());
+                                                src.close();
+                                                dst.close();
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        Snackbar snack = Snackbar.make(rootView, "Error restoring!!!", Snackbar.LENGTH_SHORT);
+                                        snack.show();
+                                    }
+                                    Snackbar snack = Snackbar.make(rootView, "Database backup complete", Snackbar.LENGTH_SHORT);
+                                    snack.show();
+                                    break;
+                                case DialogInterface.BUTTON_NEGATIVE:
+                                    //No button clicked
+                                    break;
                             }
                         }
-                    } catch (Exception e) {
-                        Snackbar snack = Snackbar.make(rootView, "Error restoring!!!", Snackbar.LENGTH_SHORT);
-                        snack.show();
-                    }
-                    Snackbar snack = Snackbar.make(rootView, "Database backup complete", Snackbar.LENGTH_SHORT);
-                    snack.show();
+                    };
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
+                            .setNegativeButton("No", dialogClickListener).show();
                 }
                 if (position == 3) {
                     DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -115,30 +131,47 @@ public class SettingsFragment extends android.support.v4.app.Fragment {
                             .show();
                 }
                 if (position == 2) {
-                    try {
-                        File sd = Environment.getExternalStorageDirectory();
-                        File data = Environment.getDataDirectory();
+                    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (which) {
+                                case DialogInterface.BUTTON_POSITIVE:
+                                    try {
+                                        File sd = Environment.getExternalStorageDirectory();
+                                        File data = Environment.getDataDirectory();
 
-                        if (sd.canWrite()) {
-                            String currentDBPath = "//data//" + getContext().getPackageName() + "//databases//" + "books.db" + "";
-                            String backupDBPath = "BookBunker.db";
-                            File currentDB = new File(data, currentDBPath);
-                            File backupDB = new File(sd, backupDBPath);
+                                        if (sd.canWrite()) {
+                                            String currentDBPath = "//data//" + getContext().getPackageName() + "//databases//" + "books.db" + "";
+                                            String backupDBPath = "BookBunker.db";
+                                            File currentDB = new File(data, currentDBPath);
+                                            File backupDB = new File(sd, backupDBPath);
 
-                            if (currentDB.exists()) {
-                                FileChannel src = new FileInputStream(backupDB).getChannel();
-                                FileChannel dst = new FileOutputStream(currentDB).getChannel();
-                                dst.transferFrom(src, 0, src.size());
-                                src.close();
-                                dst.close();
-                                Snackbar snack = Snackbar.make(rootView, "Database restored", Snackbar.LENGTH_SHORT);
-                                snack.show();
+                                            if (currentDB.exists()) {
+                                                FileChannel src = new FileInputStream(backupDB).getChannel();
+                                                FileChannel dst = new FileOutputStream(currentDB).getChannel();
+                                                dst.transferFrom(src, 0, src.size());
+                                                src.close();
+                                                dst.close();
+                                                Snackbar snack = Snackbar.make(rootView, "Database restored", Snackbar.LENGTH_SHORT);
+                                                snack.show();
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        Snackbar snack = Snackbar.make(rootView, "Error restoring!!!", Snackbar.LENGTH_SHORT);
+                                        snack.show();
+                                    }
+                                    break;
+
+                                case DialogInterface.BUTTON_NEGATIVE:
+                                    //No button clicked
+                                    break;
                             }
                         }
-                    } catch (Exception e) {
-                        Snackbar snack = Snackbar.make(rootView, "Error restoring!!!", Snackbar.LENGTH_SHORT);
-                        snack.show();
-                    }
+                    };
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
+                            .setNegativeButton("No", dialogClickListener).show();
 
 
                 }
