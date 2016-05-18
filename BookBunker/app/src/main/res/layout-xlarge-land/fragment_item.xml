@@ -1,0 +1,70 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="65dp"
+    android:layout_marginLeft="350dp"
+    android:layout_marginRight="300dp"
+    tools:context="neagucristian.bookbunker.ItemFragment"
+    android:background="@drawable/itemfragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginRight="40dp">
+
+
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif"
+            android:text="Title"
+            android:textColor="#000000"
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/item_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/item_title"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="sans-serif"
+            android:text="Author"
+            android:textColor="#000000"
+            android:textSize="27sp" />
+
+        <RatingBar
+            android:id="@+id/item_rating"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/item_author"
+            android:layout_marginLeft="12dp" />
+
+        <TextView
+            android:id="@+id/item_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Comment"
+            android:textColor="#000000"
+            android:layout_below="@+id/item_rating"
+            android:layout_alignLeft="@+id/item_author"
+            android:layout_alignStart="@+id/item_author"
+            android:textSize="25sp"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

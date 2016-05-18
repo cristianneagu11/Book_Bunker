@@ -1,0 +1,35 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="neagucristian.bookbunker.LibraryFragment"
+    android:layout_marginTop="65dp"
+    android:layout_marginLeft="200dp"
+    android:layout_marginRight="200dp"
+    android:background="@drawable/listbackground">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/library_list"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="50dp">
+
+    </ListView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/library_oops"
+        android:id="@+id/library_oops"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:fontFamily="sans-serif-thin"
+        android:textSize="40sp"
+        android:layout_margin="70dp"
+        android:visibility="invisible"/>
+
+</FrameLayout>

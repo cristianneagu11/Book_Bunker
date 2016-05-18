@@ -35,7 +35,8 @@ public class EntryFragment extends android.support.v4.app.Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+
+        super.onCreate(savedInstanceState);
     }
 
     @Override

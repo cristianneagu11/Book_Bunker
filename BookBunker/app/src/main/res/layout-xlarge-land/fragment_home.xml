@@ -1,0 +1,81 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="neagucristian.bookbunker.HomeFragment"
+
+    android:layout_marginTop="65dp">
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="250dp"
+        android:paddingLeft="250dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/homefragment">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="55sp"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:text="@string/home_welcome"
+            android:id="@+id/home_welcome"
+            android:layout_marginTop="170dp"
+            android:fontFamily="sans-serif-thin"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="50sp"
+            android:textAlignment="center"
+            android:textColor="#4B4B4B"
+            android:text="@string/home_countText2"
+            android:id="@+id/home_countText1"
+            android:fontFamily="sans-serif-thin"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/home_countNumber"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="50sp"
+            android:textAlignment="center"
+            android:textColor="#4B4B4B"
+            android:text="###"
+            android:id="@+id/home_countNumber"
+            android:fontFamily="sans-serif-thin"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/home_countText2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="50sp"
+            android:textAlignment="center"
+            android:textColor="#4B4B4B"
+            android:text="@string/home_countText1"
+            android:id="@+id/home_countText2"
+            android:fontFamily="sans-serif-thin"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/home_welcome"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    </ScrollView>
+</FrameLayout>

@@ -45,6 +45,7 @@ public class LibraryFragment extends android.support.v4.app.Fragment {
 
         ArrayList<ListEntry> objects = new ArrayList<ListEntry>();
         ListEntry object;
+        int i = 1;
         if(c != null) {
             while(c.moveToNext()) {
                 object = new ListEntry(c.getInt(0), c.getString(1), c.getString(2), c.getInt(4));

@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity
         PendingIntent pi = PendingIntent.getBroadcast(this.getApplicationContext(), 234324246,
                 intent, 0);
         AlarmManager mAlarm = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-        mAlarm.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+3*1000, pi);
+        mAlarm.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+10*1000, pi);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -15,9 +15,9 @@
     <string name="entry_authorView">Author:</string>
     <string name="entry_authorHint">Author McBook</string>
     <string name="entry_titleView">Title:</string>
-    <string name="entry_titleHint">Titleoo</string>
+    <string name="entry_titleHint">Title</string>
     <string name="entry_commentView">Add any comment you have:</string>
-    <string name="entry_commentHint">Bla Bla Yada Yada</string>
+    <string name="entry_commentHint">Great Stuff!</string>
     <string name="entry_add">Add entry</string>
     <string name="entry_clear">Clear entry</string>
     <!--settings-->

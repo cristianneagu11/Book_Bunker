@@ -2,7 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="48dp"
+    android:layout_marginTop="65dp"
+    android:layout_marginLeft="150dp"
+    android:layout_marginRight="150dp"
     tools:context="neagucristian.bookbunker.ItemFragment"
     android:background="@drawable/itemfragment">
 

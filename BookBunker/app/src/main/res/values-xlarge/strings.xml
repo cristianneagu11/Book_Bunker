@@ -15,9 +15,9 @@
     <string name="entry_authorView">Author:</string>
     <string name="entry_authorHint">Author McBook</string>
     <string name="entry_titleView">Title:</string>
-    <string name="entry_titleHint">Book</string>
+    <string name="entry_titleHint">Title somethin\'</string>
     <string name="entry_commentView">Add any comment you have:</string>
-    <string name="entry_commentHint">Great stuff!</string>
+    <string name="entry_commentHint">Great Stuff!</string>
     <string name="entry_add">Add entry</string>
     <string name="entry_clear">Clear entry</string>
     <!--settings-->
@@ -37,6 +37,6 @@
     <string name="edit_accept">Accept</string>
     <string name="edit_reject">Reject</string>
     <!--notification-->
-    <string name="notification_title">Hey there, reader!</string>
+    <string name="notification_title">Hey, we miss you, reader…</string>
     <string name="notification_text">You should read something new!</string>
 </resources>

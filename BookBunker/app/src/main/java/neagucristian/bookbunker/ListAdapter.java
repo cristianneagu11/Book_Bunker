@@ -50,7 +50,7 @@ public class ListAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.textView1.setText(objects.get(position).getId() + ". " + objects.get(position).getTitle());
+        holder.textView1.setText( objects.get(position).getTitle());
         holder.textView2.setText("by " + objects.get(position).getAuthor());
         holder.rating.setRating(objects.get(position).getRating());
         return convertView;
